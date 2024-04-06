@@ -1,0 +1,11 @@
+<h1>User Profile: <%= @user.username %></h1>
+
+<h2>Events Created by <%= @user.username %>:</h2>
+<ul>
+  <% @events.each do |event| %>
+    <li><%= event.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
