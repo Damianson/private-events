@@ -7,5 +7,30 @@
   <% end %>
 </ul>
 
+<h2>Attended Events:</h2>
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <li><%= link_to event.name, event %></li>
+  <% end %>
+</ul>
+
+<h3>Past Events:</h3>
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <% if event.date < Date.today %>
+      <li><%= link_to event.name, event %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h3>Future Events:</h3>
+<ul>
+  <% @user.attended_events.each do |event| %>
+    <% if event.date >= Date.today %>
+      <li><%= link_to event.name, event %></li>
+    <% end %>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -16,10 +16,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :events do
-    member do
-      post 'attend'
-      delete 'unattend'
-    end
+    resources :attendances, only: [:create, :destroy]
   end
   
   root 'events#index'
